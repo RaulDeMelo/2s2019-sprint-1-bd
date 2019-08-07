@@ -10,6 +10,7 @@ insert into Categoria (Nome) values ('Jogos'), ('Meetup'), ('Futebol');
 
 -- ORDENAÇÃO
 select * from Evento order by Titulo asc;
+select * from Categoria;
 select * from Usuario;
 
 -- EVENTO ADD
