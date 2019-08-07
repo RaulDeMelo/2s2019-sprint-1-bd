@@ -10,18 +10,19 @@ create table Cliente(
 	,Endereco varchar (255) not null
 )
 
--- TABELA DE FUNCION¡RIOS
+-- TABELA DE FUNCION√ÅRIOS
 create table Funcionario(
 	IdFuncionario int primary key identity
 	,Nome varchar (255) not null
 )
 
+-- TABELA DE STATUS
 create table StatusP(
 	IdStatus int primary key identity
 	,Nome varchar (255) not null
 )
 
--- TABELA DE OCORR NCIAS
+-- TABELA DE OCORR√äNCIAS
 create table Ocorrencia(
 	IdOcorrencia int primary key identity
 	,IdCliente int foreign key references Cliente (IdCliente)
@@ -33,7 +34,7 @@ create table Ocorrencia(
 	,Preco int
 )
 
--- TABELA DE RELA«√O FUNCION¡RIO-OCORR NCIA
+-- TABELA DE RELA√á√ÉO FUNCION√ÅRIO-OCORR√äNCIA
 create table CorreFuncOcorre(
 	IdOcorrencia int foreign key references Ocorrencia (IdOcorrencia)
 	,IdFuncionario int foreign key references Funcionario (IdFuncionario)
