@@ -11,21 +11,21 @@ create table TipoUsuario(
 create table Usuario(
 	IdUsuario int primary key identity
 	,Nome varchar (255) not null
-	,Email varchar (255) not null
-	,Senha varchar (255) not null
+	,Email varchar (255) not null unique
+	,Senha varchar (255) not null unique
 	,IdTipoUsuario int foreign key references TipoUsuario (IdTipoUsuario)
 )
 
 -- CRIAÇÃO TABELA DE CATEGORIAS
 create table Categoria(
 	IdCategoria int primary key identity
-	,Nome varchar (255) not null
+	,Nome varchar (255) not null unique
 )
 
 -- CRIAÇÃO TABELA DE TIPO DE METRAGEM
 create table TipoMetragem(
 	IdTipoMetragem int primary key identity
-	,Nome varchar (255) not null
+	,Nome varchar (255) not null unique
 )
 
 -- CRIAÇÃO TABELA DE LANÇAMENTOS
