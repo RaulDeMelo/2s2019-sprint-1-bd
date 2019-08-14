@@ -14,6 +14,13 @@
 		where IdUsuario = @IdUsuario
 		go
 
+	-- PROCEDURE CRIAÇÃO DE VISUALIZAÇÃO POR TIPO DE USUÁRIO
+		create procedure VisualizarUsuarioPorAutorizacao
+		@IdTipoUsuario int as
+		select * from Usuario
+		where IdTipoUsuario = @IdTipoUsuario
+		go
+
 	-- VIEW CRIAÇÃO DE VISUALIZAÇÃO DE LANÇAMENTOS
 		create view VisualizarLancamentos as
 		select C.Nome as Categoria, T.Nome as TipoDeProdução, L.Nome as NomeDoLançamento, L.DataLancamento as DataDeLançamento, L.Sinopse, L.TempDuracao as TempoDeDuração
@@ -27,7 +34,7 @@
 		create procedure VisualizarFavorito 
 		@IdLancamento int
 		as
-		select count(IdLancamento) from LancamentoFavoritado 
+		select count(IdLancamento) as NumeroDeFavoritos from LancamentoFavoritado 
 		where IdUsuario = @IdLancamento
 		go
 
@@ -35,7 +42,7 @@
 		create procedure VisualizarFilmesPorCategorias
 		@IdCategoria int
 		as
-		select count(IdCategoria) from Lancamento 
+		select count(IdCategoria) as NumeroDeFilmesDestaCategoria from Lancamento 
 		where IdCategoria = @IdCategoria
 		go
 
@@ -64,20 +71,18 @@ use M_Opflix
 
 	-- EXIBIR CARTAZ DE FILMES A SEREM LANÇADOS
 		select * from VisualizarLancamentos;
+	-- EXIBIR TODOS OS FILMES CADASTRADOS
+		select count(IdLancamento) from Lancamento
 	-- EXECUTAR VISUALIZAÇÃO DE FAVORITOS, ONDE NÚMERO 'INT' EQUIVALE AO ID DE LANÇAMENTO INERENTE
 		exec VisualizarFavorito 4;
-	-- EXIBIR ADMINISTRADORES
-
-	-- EXIBIR USUÁRIOS COMUNS
-
-	-- EXIBIR PARCERIAS
-
+	-- EXIBIR ESPECIFICAÇÃO DE TIPOS DE USUÁRIO
+		exec VisualizarUsuarioPorAutorizacao 1;
 	-- EXIBIR USUÁRIOS EM PÚBLICO
 		select * from VisualizarUsuarios
 	-- EXIBIR NÚMERO DE USUÁRIOS
-		select count(IdUsuario) from Usuario;
+		select count(IdUsuario) as NumeroDeUsuarios from Usuario;
 	-- FILTRAR USUÁRIO POR NOME - TODOS OS DADOS
-		exec VisualizarUsuario 1;
+		exec VisualizarUsuario 3;
 	-- FILTRAR FILMES CADASTRADOS EM CADA CATEGORIA
 		exec VisualizarFilmesPorCategorias 2;
 
