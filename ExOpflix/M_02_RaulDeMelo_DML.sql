@@ -1,11 +1,11 @@
 use M_Opflix
 
--- INSER«√O DE DADOS NO TIPO DE USU¡RIOS
+-- INSER√á√ÉO DE DADOS NO TIPO DE USU√ÅRIOS
 insert into TipoUsuario (Nome) values ('Cliente');
 insert into TipoUsuario (Nome) values ('Administrador');
 insert into TipoUsuario (Nome) values ('Parceria');
 
--- INSER«√O DE DADOS DE USU¡RIO
+-- INSER√á√ÉO DE DADOS DE USU√ÅRIO
 insert into Usuario (Nome, Email, Senha, IdTipoUsuario) values ('Erik', 'erik@email.com', '123456', '2');
 insert into Usuario (Nome, Email, Senha, IdTipoUsuario) values ('Cassiana', 'cassiana@email.com', '123456', '2');
 insert into Usuario (Nome, Email, Senha, IdTipoUsuario) values ('Helena', 'helena@gmail.com', '123456', '1');
@@ -13,22 +13,26 @@ insert into Usuario (Nome, Email, Senha, IdTipoUsuario) values ('Roberto', 'rob@
 insert into Usuario (Nome, Email, Senha, IdTipoUsuario) values ('Raul', 'raulzinho@gmail.com', '22016064', '3');
 insert into Usuario (Nome, Email, Senha, IdTipoUsuario) values ('NaomiUmehara', 'naominha@gmail.com', '5689134', '1');
 
-
--- INSER«√O DE DADOS DE METRAGEM
+-- INSER√á√ÉO DE DADOS DE METRAGEM
 insert into TipoMetragem (Nome) values ('Filme');
-insert into TipoMetragem (Nome) values ('SÈrie');
+insert into TipoMetragem (Nome) values ('S√©rie');
 
--- INSER«√O DE DADOS EM CATEGORIA
-insert into Categoria (Nome) values ('HerÛi');
-insert into Categoria (Nome) values ('AÁ„o');
+-- INSER√á√ÉO DE DADOS EM CATEGORIA
+insert into Categoria (Nome) values ('Her√≥i');
+insert into Categoria (Nome) values ('A√ß√£o');
 insert into Categoria (Nome) values ('Terror');
 insert into Categoria (Nome) values ('Romance');
-insert into Categoria (Nome) values ('Document·rio');
-insert into Categoria (Nome) values ('ComÈdia');
+insert into Categoria (Nome) values ('Document√°rio');
+insert into Categoria (Nome) values ('Com√©dia');
 insert into Categoria (Nome) values ('Drama');
-insert into Categoria (Nome) values ('FicÁ„o CientÌfica');
+insert into Categoria (Nome) values ('Fic√ß√£o Cient√≠fica');
 
--- INSER«√O DE DADOS EM LAN«AMENTO
+-- INSER√á√ÉO DE DADOS EM PLATAFORMAS
+insert into Plataforma (Nome) values ('Telecine');
+insert into Plataforma (Nome) values ('Record');
+insert into Plataforma (Nome) values ('Globo');
+
+-- INSER√á√ÉO DE DADOS EM LAN√áAMENTO
 -- insert into Lancamento (Nome, IdCategoria, IdTipoMetragem, TempDuracao, DataLancamento, Sinopse) values ('Vingadores', 1, 1, '3:29:11', '20030710', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eget molestie sapien. Suspendisse potenti. Maecenas risus augue, interdum porta congue ac, pellentesque id lectus. Quisque efficitur ex feugiat, pretium diam at, rhoncus libero. Proin convallis ultricies porttitor. Integer fringilla vehicula convallis. Etiam vitae lacus suscipit lacus ultricies elementum ut vel nisi.');
 -- insert into Lancamento (Nome, IdCategoria, IdTipoMetragem, TempDuracao, DataLancamento, Sinopse) values ('Anabele', 3, 1, '2:20:15', '20090416', 'Vivamus dolor enim, commodo in convallis id, accumsan a augue. Fusce fringilla dui quis justo scelerisque egestas. Nunc semper lorem metus, id vehicula nulla aliquet vulputate. Suspendisse varius eleifend leo. Aliquam sit amet accumsan elit. Morbi efficitur tortor ac lorem ullamcorper pretium. Praesent in tincidunt ante. Suspendisse consectetur ante vel magna suscipit, ac tempus nulla ornare.');
 -- insert into Lancamento (Nome, IdCategoria, IdTipoMetragem, TempDuracao, DataLancamento, Sinopse) values ('Duro de matar', 2, 1, '2:20:15', '20100814', 'Praesent varius lorem id ligula sollicitudin, eget pretium massa accumsan. Aenean ultrices felis purus, ut luctus tellus commodo eget. Phasellus vestibulum turpis in erat feugiat pharetra. Nam quis orci ligula. Vestibulum libero dolor, pharetra vel pretium vitae, rutrum ac ex. Aenean nunc tellus, mollis sit amet suscipit quis, pellentesque sit amet mi. Sed enim eros, faucibus eget iaculis vel, mattis vel tortor. In hac habitasse platea dictumst. Vivamus ligula ante, blandit et tellus vel, lacinia dignissim justo.');
@@ -41,10 +45,10 @@ as insert into Lancamento (Nome, IdCategoria, IdTipoMetragem, TempDuracao, DataL
 @IdCategoria, @IdTipoMetragem, @TempDuracao, @DataLancamento, @Sinopse)
 go
 
--- INVOCAR PROCESSO DE INSER«√O DE FILME AUTOMATIZADO
+-- INVOCAR PROCESSO DE INSER√á√ÉO DE FILME AUTOMATIZADO
 exec InserirFilme  'asdsadkjdsa', 1, 2, '20:00:00', '20030516', 'kdsajdas';
 
--- INSER«√O DE DADOS EM LISTA DE FAVORITOS
+-- INSER√á√ÉO DE DADOS EM LISTA DE FAVORITOS
 insert into LancamentoFavoritado (IdUsuario, IdLancamento) values (1,2)
 insert into LancamentoFavoritado (IdUsuario, IdLancamento) values (2,1)
 insert into LancamentoFavoritado (IdUsuario, IdLancamento) values (3,4)
