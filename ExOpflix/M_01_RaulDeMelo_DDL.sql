@@ -39,10 +39,10 @@ create table Lancamento(
 	IdLancamento int primary key identity
 	,Nome varchar (255) not null
 	,IdCategoria int foreign key references Categoria (IdCategoria)
-	,Sinopse text
 	,IdTipoMetragem int foreign key references TipoMetragem (IdTipoMetragem)
 	,TempDuracao time
 	,DataLancamento date
+	,Sinopse text
 	,IdPlataforma int foreign key references Plataforma (IdPlataforma)
 )
 
