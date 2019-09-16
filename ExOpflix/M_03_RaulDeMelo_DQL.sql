@@ -1,36 +1,36 @@
--- MÉTODOS --
+-- MÃ‰TODOS --
 
-	-- VIEW CRIAÇÃO DE VISUALIZAÇÃO DE TODOS OS USUÁRIOS USUÁRIOS 
+	-- VIEW CRIAÃ‡ÃƒO DE VISUALIZAÃ‡ÃƒO DE TODOS OS USUÃRIOS USUÃRIOS 
 		create view VisualizarUsuarios as
-		select U.IdUsuario as CodigoIdentificação, U.Nome as NomeDoUsuario, T.Nome as Autorização
+		select U.IdUsuario as CodigoIdentificaÃ§Ã£o, U.Nome as NomeDoUsuario, T.Nome as AutorizaÃ§Ã£o
 		from Usuario as U
 		inner join TipoUsuario as T
 		on U.IdTipoUsuario = T.IdTipoUsuario
 
-		-- VIEW CRIAÇÃO DE VISUALIZAÇÃO INDIVIDUAL DE USUÁRIO
+		-- VIEW CRIAÃ‡ÃƒO DE VISUALIZAÃ‡ÃƒO INDIVIDUAL DE USUÃRIO
 		create procedure VisualizarUsuario
 		@IdUsuario int as
 		select * from Usuario
 		where IdUsuario = @IdUsuario
 		go
 
-	-- PROCEDURE CRIAÇÃO DE VISUALIZAÇÃO POR TIPO DE USUÁRIO
+	-- PROCEDURE CRIAÃ‡ÃƒO DE VISUALIZAÃ‡ÃƒO POR TIPO DE USUÃRIO
 		create procedure VisualizarUsuarioPorAutorizacao
 		@IdTipoUsuario int as
 		select * from Usuario
 		where IdTipoUsuario = @IdTipoUsuario
 		go
 
-	-- VIEW CRIAÇÃO DE VISUALIZAÇÃO DE LANÇAMENTOS
+	-- VIEW CRIAÃ‡ÃƒO DE VISUALIZAÃ‡ÃƒO DE LANÃ‡AMENTOS
 		create view VisualizarLancamentos as
-		select C.Nome as Categoria, T.Nome as TipoDeProdução, L.Nome as NomeDoLançamento, L.DataLancamento as DataDeLançamento, L.Sinopse, L.TempDuracao as TempoDeDuração
+		select C.Nome as Categoria, T.Nome as TipoDeProduÃ§Ã£o, L.Nome as NomeDoLanÃ§amento, L.DataLancamento as DataDeLanÃ§amento, L.Sinopse, L.TempDuracao as TempoDeDuraÃ§Ã£o
 		from Lancamento as L
 		inner join Categoria as C
 		on L.IdCategoria = C.IdCategoria
 		join TipoMetragem as T
 		on L.IdTipoMetragem = T.IdTipoMetragem
 
-	-- PROCEDURE CRIAÇÃO DE VISUALIZAÇÃO DE FAVORITOS
+	-- PROCEDURE CRIAÃ‡ÃƒO DE VISUALIZAÃ‡ÃƒO DE FAVORITOS
 		create procedure VisualizarFavorito 
 		@IdLancamento int
 		as
@@ -38,7 +38,7 @@
 		where IdUsuario = @IdLancamento
 		go
 
-	-- PROCEDURE CRIAÇÃO DE VISUALIZAÇÃO NÚMERO DE FILMES POR CADA CATEGORIA
+	-- PROCEDURE CRIAÃ‡ÃƒO DE VISUALIZAÃ‡ÃƒO NÃšMERO DE FILMES POR CADA CATEGORIA
 		create procedure VisualizarFilmesPorCategorias
 		@IdCategoria int
 		as
@@ -46,44 +46,46 @@
 		where IdCategoria = @IdCategoria
 		go
 
--- FINAL DE MÉTODOS --
+-- FINAL DE MÃ‰TODOS --
 
 use M_Opflix
 
--- VISUALIZAÇÃO INDIVIDUAL DE TABELAS --
+-- VISUALIZAÃ‡ÃƒO INDIVIDUAL DE TABELAS --
 
+	-- VISUALIZAR TODAS AS PLATAFORMAS
+		select * from Plataforma;
 	-- VISUALIZAR TODO TIPO DE USUARIO
 		select * from TipoUsuario;
-	-- VISUALIZAR TODOS OS USUÁRIOS
+	-- VISUALIZAR TODOS OS USUÃRIOS
 		select * from Usuario;
 	-- VISUALIZAR TODO TIPO DE METRAGEM
 		select * from TipoMetragem;
 	-- VISUALIZAR TODAS AS CATEGORIAS
 		select * from Categoria;
-	-- VISUALIZAR TODOS OS LANÇAMENTOS
+	-- VISUALIZAR TODOS OS LANÃ‡AMENTOS
 		select * from Lancamento;
-	-- VISUALIZAR TODOS OS LANÇAMENTOS FAVORITADOS EM ORDEM CRESCENTE DE INSCRIÇÃO
+	-- VISUALIZAR TODOS OS LANÃ‡AMENTOS FAVORITADOS EM ORDEM CRESCENTE DE INSCRIÃ‡ÃƒO
 		select * from LancamentoFavoritado order by IdLancamento asc;
 
--- FINAL VISUALIZAÇÃO INDIVIDUAL DE TABELAS --
+-- FINAL VISUALIZAÃ‡ÃƒO INDIVIDUAL DE TABELAS --
 
--- EXIBIÇÃO
+-- EXIBIÃ‡ÃƒO
 
-	-- EXIBIR CARTAZ DE FILMES A SEREM LANÇADOS
+	-- EXIBIR CARTAZ DE FILMES A SEREM LANÃ‡ADOS
 		select * from VisualizarLancamentos;
 	-- EXIBIR TODOS OS FILMES CADASTRADOS
 		select count(IdLancamento) from Lancamento
-	-- EXECUTAR VISUALIZAÇÃO DE FAVORITOS, ONDE NÚMERO 'INT' EQUIVALE AO ID DE LANÇAMENTO INERENTE
+	-- EXECUTAR VISUALIZAÃ‡ÃƒO DE FAVORITOS, ONDE NÃšMERO 'INT' EQUIVALE AO ID DE LANÃ‡AMENTO INERENTE
 		exec VisualizarFavorito 4;
-	-- EXIBIR ESPECIFICAÇÃO DE TIPOS DE USUÁRIO
+	-- EXIBIR ESPECIFICAÃ‡ÃƒO DE TIPOS DE USUÃRIO
 		exec VisualizarUsuarioPorAutorizacao 1;
-	-- EXIBIR USUÁRIOS EM PÚBLICO
+	-- EXIBIR USUÃRIOS EM PÃšBLICO
 		select * from VisualizarUsuarios
-	-- EXIBIR NÚMERO DE USUÁRIOS
+	-- EXIBIR NÃšMERO DE USUÃRIOS
 		select count(IdUsuario) as NumeroDeUsuarios from Usuario;
-	-- FILTRAR USUÁRIO POR NOME - TODOS OS DADOS
+	-- FILTRAR USUÃRIO POR NOME - TODOS OS DADOS
 		exec VisualizarUsuario 3;
 	-- FILTRAR FILMES CADASTRADOS EM CADA CATEGORIA
 		exec VisualizarFilmesPorCategorias 2;
 
--- FINAL EXIBIÇÃO
+-- FINAL EXIBIÃ‡ÃƒO
